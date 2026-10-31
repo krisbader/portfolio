@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Iterating on an Overlooked Personalization Touchpoint | Kris Bader</title>
+<!-- seo:start -->
+<meta name="description" content="Four research methods in two weeks narrowed many designs to one that was twice as effective as the original loan carousel in an A/B test.">
+<meta name="author" content="Kris Bader">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kris Bader, UX Research">
+<meta property="og:title" content="Iterating on an Overlooked Personalization Touchpoint | Kris Bader">
+<meta property="og:description" content="Four research methods in two weeks narrowed many designs to one that was twice as effective as the original loan carousel in an A/B test.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kris Bader, Senior UX Researcher: I bring users' voices into the rooms where product decisions get made.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Iterating on an Overlooked Personalization Touchpoint | Kris Bader">
+<meta name="twitter:description" content="Four research methods in two weeks narrowed many designs to one that was twice as effective as the original loan carousel in an A/B test.">
+<meta name="twitter:image" content="og-image.png">
+<!-- seo:end -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: one reading column (40rem) with a wider facts strip.
+   Same tokens as the homepage so the two pages feel like one site. */
+:root {
+  --bg: #ffffff; --surface: #f4f8fe; --sunk: #eaf1fd;
+  --fg: #111111; --muted: #4a5563; --line: #d5e0f0;
+  --accent: #4a86e8; --accent-ink: #0a0a0a; --link: #2f67cc;
+  --mark: #b9d3fb; --ph-bg: #fff4d6; --ph-fg: #7a5200;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --step--1: 0.875rem; --step-0: 1.0625rem; --step-1: 1.3rem; --step-2: 1.75rem;
+  --step-3: clamp(2.1rem, 1.5rem + 2.6vw, 3.1rem);
+  --radius: 10px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: var(--step-0); line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.skip { position: absolute; left: -9999px; top: 8px; background: var(--accent); color: var(--accent-ink); padding: 8px 14px; border-radius: 6px; z-index: 20; }
+.skip:focus { left: max(16px, env(safe-area-inset-left, 0px)); }
+
+.wrap { max-width: 68rem; margin-inline: auto; }
+.col { max-width: 40rem; }
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: var(--step-3); font-weight: 700; letter-spacing: -0.01em; max-width: 34ch; }
+h2 { font-size: var(--step-2); font-weight: 700; }
+h3 { font-size: var(--step-1); font-weight: 700; }
+p { margin: 0; }
+.label { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.ph { display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; background: var(--ph-bg); color: var(--ph-fg); padding: 5px 7px; border-radius: 4px; vertical-align: middle; }
+.hl { background-image: linear-gradient(transparent 58%, var(--mark) 58%, var(--mark) 92%, transparent 92%); padding-inline: 2px; }
+
+header.site { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 20px; border-bottom: 1px solid var(--line); }
+header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); padding-block: 12px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 11; background: var(--bg); }
+html { scroll-padding-top: 5rem; }
+@media (max-width: 40rem) { html { scroll-padding-top: 7.5rem; } }
+.back { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; text-decoration: none; }
+.back:hover { text-decoration: underline; }
+.name { font-family: var(--font-display); font-weight: 700; color: var(--fg); text-decoration: none; }
+
+.hero { padding-block: clamp(40px, 7vw, 72px) clamp(28px, 5vw, 48px); display: grid; gap: 18px; }
+.dek { font-size: var(--step-1); line-height: 1.5; max-width: 38rem; }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 20px 28px; margin: 0; padding: 24px 0; border-block: 1px solid var(--line); }
+.facts div { display: grid; gap: 2px; min-width: 0; align-content: start; }
+.facts dt { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.facts dd { margin: 0; font-size: var(--step--1); line-height: 1.5; }
+
+.summary { margin-block: 40px 0; background: var(--sunk); border-radius: var(--radius); padding: clamp(20px, 4vw, 32px); display: grid; gap: 16px; }
+.summary dl { margin: 0; display: grid; gap: 14px; }
+.summary dt { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.summary .label, .summary dt { font-weight: 700; color: var(--fg); }
+.summary dd { margin: 2px 0 0; max-width: 44rem; }
+
+section { padding-block: clamp(32px, 5vw, 56px); display: grid; gap: 16px; }
+section + section { border-top: 1px solid var(--line); }
+section > * { max-width: 40rem; }
+section > h2 { max-width: none; text-wrap: pretty; }
+section > .wide { max-width: none; }
+ul.plain, ol.plain { margin: 0; padding-left: 1.25em; display: grid; gap: 8px; }
+
+/* Timeline: order matters here, so it is a real ordered list */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 16px; }
+.timeline li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; gap: 6px; grid-template-rows: auto 1fr auto; }
+.timeline .when { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 6px; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.timeline strong { font-family: var(--font-display); font-size: 1.1rem; line-height: 1.25; }
+.timeline span.t { font-size: var(--step--1); }
+@media (min-width: 40rem) { .timeline strong { min-height: 2.5em; } }
+
+/* Quotes */
+figure.quote { margin: 8px 0 8px 1.5rem; display: grid; gap: 8px; padding: 4px 0 4px 16px; border-left: 3px solid var(--accent); }
+figure.quote blockquote { margin: 0; font-size: var(--step-1); line-height: 1.5; font-weight: 700; }
+figure.quote figcaption { font-size: var(--step--1); color: var(--muted); }
+figure.quote figcaption strong { color: var(--fg); font-weight: 600; }
+.quotes { display: grid; gap: 28px; }
+
+.findings { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.findings li { display: grid; gap: 2px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.findings strong { font-weight: 700; }
+
+.next { padding-block: 40px 56px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; border-radius: 8px; font: 600 1rem var(--font-body); text-decoration: none; border: 2px solid var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+footer { padding-block: 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: var(--step--1); }
+.appx { border-top: 1px solid var(--line); padding-block: 4px; max-width: 40rem; }
+.appx:last-of-type { border-bottom: 1px solid var(--line); }
+.appx summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-family: var(--font-mono); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
+.appx summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.appx summary { list-style: none; justify-content: space-between; gap: 16px; }
+.appx summary::-webkit-details-marker { display: none; }
+.appx summary::after { content: ""; flex: none; width: 20px; height: 20px; background-image: linear-gradient(var(--accent), var(--accent)), linear-gradient(var(--accent), var(--accent)); background-size: 16px 3px, 3px 16px; background-position: center; background-repeat: no-repeat; }
+.appx[open] > summary::after { background-size: 16px 3px, 0 0; }
+.appx > :not(summary) { margin-block: 0 14px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="wrap" id="top">
+  <header class="site">
+    <a class="back" href="index.html#work"><span aria-hidden="true">←&nbsp;</span> All case studies</a>
+    <a class="name" href="index.html">Kris Bader</a>
+  </header>
+
+  <main id="main">
+    <div class="hero">
+      <p class="label">Case study · Mixed methods · Personal Loans Profile · Personal loans</p>
+      <h1>Iterating on an Overlooked Personalization Touchpoint</h1>
+      <p class="dek">Users ignored a carousel that was meant to personalize loan offers. Four research methods in two weeks narrowed many designs down to one, and showed <span class="hl">users wanted reassurance up front</span>, not explanations after.</p>
+    </div>
+
+    <dl class="facts">
+      <div><dt>My role</dt><dd>Senior UX Researcher</dd></div>
+      <div><dt>Team</dt><dd>Me, Product, Design, Development</dd></div>
+      <div><dt>Timeline</dt><dd>October 2024 · 2 weeks</dd></div>
+      <div><dt>Participants</dt><dd>145 Experian users across all methods, all of whom browse for personal loans at least occasionally</dd></div>
+      <div><dt>Methods</dt><dd>AI eye tracking, first-click testing, a preference test, and moderated usability testing</dd></div>
+      <div><dt>Tools</dt><dd>Attention Insight, Lyssna, Figma, FigJam, Condens, TheyDo</dd></div>
+    </dl>
+
+    <div class="summary col" style="max-width:none">
+      <p class="label">The short version</p>
+      <dl>
+        <div><dt>Situation</dt><dd>A carousel asked users a few questions to personalize their loan offers. Analytics found many users ignoring it and little information being collected.</dd></div>
+        <div><dt>What I did</dt><dd>I ran four methods in sequence over two weeks, using quick unmoderated tests to narrow many design variations, then moderated sessions to compare the final two.</dd></div>
+        <div><dt>Result</dt><dd>The loan profile replaced the carousel and was twice as effective at getting users to fill out their information in an A/B test. 78,000+ Experian users have since completed it, and it now runs at 100% in production.</dd></div>
+      </dl>
+    </div>
+
+    <section aria-labelledby="why">
+      <h2 id="why">Why research mattered</h2>
+      <p>A carousel was meant to collect three things easily: the loan amount, annual income, and the purpose of the loan. With them, Experian could personalize a user's offers. Because Experian already knows a lot about its users, they expect an experience that asks less of them.</p>
+      <p>Working with analytics, the product team found the carousel wasn't working: many users ignored it, and little information was coming in. The team had three guesses. Users might be only browsing, hesitate to share personal information, or not see why sharing it helped them. The team wanted to know if extra explanation would help.</p>
+    </section>
+
+    <section aria-labelledby="approach">
+      <h2 id="approach">Research approach</h2>
+      <p>This project was part of Experian's early rollout of its Product Operating Model, where pods of research, design, product, and development worked together to ship ideas faster. As the pod's researcher, I narrowed the designer's many variations over two weeks. Each method answered a different question and set up the next one.</p>
+      <ul class="plain">
+        <li><strong>Method 1: AI eye tracking.</strong> What draws attention? A fast first look at which variations stood out.</li>
+        <li><strong>Method 2: First-click testing.</strong> Would users look in the right place? A check that the loan profile fit how users expect to find things.</li>
+        <li><strong>Method 3: Preference test.</strong> Which variation do they favor? The remaining few designs, compared head to head.</li>
+        <li><strong>Method 4: Moderated usability testing.</strong> How do the top two hold up? Live sessions where I could uncover the why.</li>
+      </ul>
+      <ul class="plain">
+        <li><strong>Why this order.</strong> Unmoderated tools like Attention Insight and Lyssna made recruiting and testing quick, so early decisions didn't have to wait for live sessions. Moderated sessions came last, when only two designs remained and I needed to ask why.</li>
+        <li><strong>Participants.</strong> 145 Experian users across all methods, from our panel or through a screener about the financial companies they use. I kept those who browse for personal loans at least occasionally, since they were the ones this feature was for.</li>
+        <li><strong>Tradeoff.</strong> The eye tracking tool predicts attention rather than observing people. I treated its accuracy claims as the vendor's, and used real users in later methods to check what it suggested.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="findings">
+      <h2 id="findings">Key findings</h2>
+      <h3>1. Reassurance up front mattered more than explanation afterward</h3>
+      <p>Users liked prominent messages that their offers were prequalified, that checking wouldn't affect their credit score, and that they wouldn't get sales calls or emails. Explanations below the fields were often missed or came too late.</p>
+      <figure class="quote">
+        <blockquote>“OK, so right away I can see no sales calls or emails front and center. That was one thing that is just kind of annoying and then no impact to your credit score also answers a big question. So now I can move forward and feel a little bit better about what I'm going to see.”</blockquote>
+      </figure>
+      <h3>2. Most users preferred the simpler profile</h3>
+      <p>Comparing a minimum and a maximum version, most preferred the minimum version's simplicity. Those who preferred the maximum version pointed to its loan-amount input, not its extra explanation.</p>
+      <h3>3. A pre-filled loan amount split users</h3>
+      <p>It felt convenient to some and pushy, even predatory, to others. “Personalized” seemed to mean using, and visibly acknowledging, what Experian already knew along with the user's current needs. A number that ignored their situation felt less like help.</p>
+      <figure class="quote">
+        <blockquote>“The pre-filled amount is nice. However, it only takes in account revolving debt and prequalified status and not personal needs.”</blockquote>
+      </figure>
+      <h3>4. Approval odds helped, if users could see them</h3>
+      <p>Approval odds increased confidence, but their prominence mattered. The same information helped less when it was hard to see.</p>
+    </section>
+
+    <section aria-labelledby="outcomes">
+      <h2 id="outcomes">Influence and outcomes</h2>
+      <p>I presented findings after each round, so the team could decide how to proceed. I gathered the unmoderated results on a shared FigJam whiteboard, with user feedback, eye tracking heatmaps, and first-click maps in a single place, and played video clips for the usability findings.</p>
+      <p>Our product manager had built the maximum version himself in Figma Make, expecting users to appreciate the added information. When testing showed they preferred the minimal version, he accepted the results. Where preferences were closely split, such as pre-filled amounts and input controls, I told the team they could refine those elements or move forward with their preferred version.</p>
+      <ul class="plain">
+        <li><strong>What I recommended:</strong> lead with reassurance, keep the profile concise, and let users type and change their loan amount.</li>
+        <li><strong>What was implemented:</strong> the loan profile replaced the carousel. There have been minor refinements since.</li>
+        <li><strong>What was measured:</strong> in an A/B test run by analytics for several weeks, the profile was twice as effective as the carousel at getting users to fill out their information. 78,000+ users have since completed it, and it now runs at 100% in production.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="reflection">
+      <h2 id="reflection">Reflection</h2>
+      <p><strong>What I learned.</strong> When research moves fast, teams need to keep questions focused, compare alternatives fairly, and separate what users notice, understand, prefer, and actually complete. To a team that wants quick answers, I'd say: agree on the decision the research must inform, and let that be your anchor throughout the research process.</p>
+      <p><strong>What remained unresolved.</strong> Preferences on pre-filled amounts and input controls were closely split, so I left those choices to the team.</p>
+    </section>
+
+    <section aria-labelledby="appendix">
+      <h2 id="appendix">Appendix: methods and supporting detail</h2>
+      <p>The full method notes and the rest of the findings, for a deeper read.</p>
+      <details class="appx"><summary>All findings</summary>
+      <ul class="findings wide" style="max-width:40rem">
+        <li><strong>Lead with reassurance before requesting information.</strong><span>Prequalification, no credit score impact, and no sales calls mattered most.</span></li>
+        <li><strong>Keep the profile concise.</strong><span>Explanations below the fields were often missed or came too late.</span></li>
+        <li><strong>Let users type and change their loan amount.</strong><span>Control mattered to those who preferred the fuller version.</span></li>
+        <li><strong>Make personalization understandable and relevant to personal needs.</strong><span>A pre-filled amount felt convenient to some and pushy to others.</span></li>
+        <li><strong>Approval odds increased confidence, but their prominence mattered.</strong><span>The same information helped less when it was hard to see.</span></li>
+      </ul>
+      </details>
+      <details class="appx"><summary>Method notes</summary>
+      <p>AI eye tracking, first-click testing, a preference test, and moderated usability testing over two weeks in October 2024. The eye tracking tool's maker says it was trained on more than 5.5 million fixations and 550 million gaze points from real eye-tracking studies, and claims 90% to 96% accuracy for the first three to five seconds of attention compared with physical labs. Those figures are the vendor's claim. Tools: Attention Insight, Lyssna, Figma, FigJam, Condens, TheyDo.</p>
+      </details>
+      <details class="appx"><summary>More participant quotes</summary>
+      <figure class="quote">
+        <blockquote>“By pre-filling a desired loan amount, it feels like they are trying to make me be excited to apply for it and get into more debt”</blockquote>
+      </figure>
+      <figure class="quote">
+        <blockquote>“I like this version a little bit better. It feels a little more straightforward.”</blockquote>
+      </figure>
+      </details>
+    </section>
+
+    <div class="next">
+      <a class="btn primary" href="index.html#work">Back to all case studies</a>
+    </div>
+  </main>
+
+  <footer><p>© 2026 Kris Bader</p></footer>
+</div>
+<script>
+  // Always open at the top of the page
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+  window.scrollTo(0, 0);
+  window.addEventListener('pageshow', function () { window.scrollTo(0, 0); });
+
+</script>
+</body>
+</html>

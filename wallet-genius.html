@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diagnosing Drop-Off in a Credit Card Feature | Kris Bader</title>
+<!-- seo:start -->
+<meta name="description" content="Nearly 70% of users who clicked into a credit card feature left before the final page. Testing showed the wrong credit cards were being displayed.">
+<meta name="author" content="Kris Bader">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kris Bader, UX Research">
+<meta property="og:title" content="Diagnosing Drop-Off in a Credit Card Feature | Kris Bader">
+<meta property="og:description" content="Nearly 70% of users who clicked into a credit card feature left before the final page. Testing showed the wrong credit cards were being displayed.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kris Bader, Senior UX Researcher: I bring users' voices into the rooms where product decisions get made.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Diagnosing Drop-Off in a Credit Card Feature | Kris Bader">
+<meta name="twitter:description" content="Nearly 70% of users who clicked into a credit card feature left before the final page. Testing showed the wrong credit cards were being displayed.">
+<meta name="twitter:image" content="og-image.png">
+<!-- seo:end -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: one reading column (40rem) with a wider facts strip.
+   Same tokens as the homepage so the two pages feel like one site. */
+:root {
+  --bg: #ffffff; --surface: #f4f8fe; --sunk: #eaf1fd;
+  --fg: #111111; --muted: #4a5563; --line: #d5e0f0;
+  --accent: #4a86e8; --accent-ink: #0a0a0a; --link: #2f67cc;
+  --mark: #b9d3fb; --ph-bg: #fff4d6; --ph-fg: #7a5200;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --step--1: 0.875rem; --step-0: 1.0625rem; --step-1: 1.3rem; --step-2: 1.75rem;
+  --step-3: clamp(2.1rem, 1.5rem + 2.6vw, 3.1rem);
+  --radius: 10px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: var(--step-0); line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.skip { position: absolute; left: -9999px; top: 8px; background: var(--accent); color: var(--accent-ink); padding: 8px 14px; border-radius: 6px; z-index: 20; }
+.skip:focus { left: max(16px, env(safe-area-inset-left, 0px)); }
+
+.wrap { max-width: 68rem; margin-inline: auto; }
+.col { max-width: 40rem; }
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: var(--step-3); font-weight: 700; letter-spacing: -0.01em; max-width: 34ch; }
+h2 { font-size: var(--step-2); font-weight: 700; }
+h3 { font-size: var(--step-1); font-weight: 700; }
+p { margin: 0; }
+.label { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.ph { display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; background: var(--ph-bg); color: var(--ph-fg); padding: 5px 7px; border-radius: 4px; vertical-align: middle; }
+.hl { background-image: linear-gradient(transparent 58%, var(--mark) 58%, var(--mark) 92%, transparent 92%); padding-inline: 2px; }
+
+header.site { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 20px; border-bottom: 1px solid var(--line); }
+header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); padding-block: 12px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 11; background: var(--bg); }
+html { scroll-padding-top: 5rem; }
+@media (max-width: 40rem) { html { scroll-padding-top: 7.5rem; } }
+.back { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; text-decoration: none; }
+.back:hover { text-decoration: underline; }
+.name { font-family: var(--font-display); font-weight: 700; color: var(--fg); text-decoration: none; }
+
+.hero { padding-block: clamp(40px, 7vw, 72px) clamp(28px, 5vw, 48px); display: grid; gap: 18px; }
+.dek { font-size: var(--step-1); line-height: 1.5; max-width: 38rem; }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 20px 28px; margin: 0; padding: 24px 0; border-block: 1px solid var(--line); }
+.facts div { display: grid; gap: 2px; min-width: 0; align-content: start; }
+.facts dt { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.facts dd { margin: 0; font-size: var(--step--1); line-height: 1.5; }
+
+.summary { margin-block: 40px 0; background: var(--sunk); border-radius: var(--radius); padding: clamp(20px, 4vw, 32px); display: grid; gap: 16px; }
+.summary dl { margin: 0; display: grid; gap: 14px; }
+.summary dt { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.summary .label, .summary dt { font-weight: 700; color: var(--fg); }
+.summary dd { margin: 2px 0 0; max-width: 44rem; }
+
+section { padding-block: clamp(32px, 5vw, 56px); display: grid; gap: 16px; }
+section + section { border-top: 1px solid var(--line); }
+section > * { max-width: 40rem; }
+section > h2 { max-width: none; text-wrap: pretty; }
+section > .wide { max-width: none; }
+ul.plain, ol.plain { margin: 0; padding-left: 1.25em; display: grid; gap: 8px; }
+
+/* Timeline: order matters here, so it is a real ordered list */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 16px; }
+.timeline li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; gap: 6px; align-content: start; }
+.timeline .when { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.timeline strong { font-family: var(--font-display); font-size: 1.1rem; line-height: 1.25; }
+.timeline span.t { font-size: var(--step--1); }
+
+/* Quotes */
+figure.quote { margin: 8px 0 8px 1.5rem; display: grid; gap: 8px; padding: 4px 0 4px 16px; border-left: 3px solid var(--accent); }
+ul.plain li > figure.quote { margin-top: 10px; }
+figure.quote blockquote { margin: 0; font-size: var(--step-1); line-height: 1.5; font-weight: 700; }
+figure.quote figcaption { font-size: var(--step--1); color: var(--muted); }
+figure.quote figcaption strong { color: var(--fg); font-weight: 600; }
+.quotes { display: grid; gap: 28px; }
+
+.findings { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.findings li { display: grid; gap: 2px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.findings strong { font-weight: 700; }
+
+.next { padding-block: 40px 56px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; border-radius: 8px; font: 600 1rem var(--font-body); text-decoration: none; border: 2px solid var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+footer { padding-block: 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: var(--step--1); }
+.appx { border-top: 1px solid var(--line); padding-block: 4px; max-width: 40rem; }
+.appx:last-of-type { border-bottom: 1px solid var(--line); }
+.appx summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-family: var(--font-mono); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
+.appx summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.appx summary { list-style: none; justify-content: space-between; gap: 16px; }
+.appx summary::-webkit-details-marker { display: none; }
+.appx summary::after { content: ""; flex: none; width: 20px; height: 20px; background-image: linear-gradient(var(--accent), var(--accent)), linear-gradient(var(--accent), var(--accent)); background-size: 16px 3px, 3px 16px; background-position: center; background-repeat: no-repeat; }
+.appx[open] > summary::after { background-size: 16px 3px, 0 0; }
+.appx > :not(summary) { margin-block: 0 14px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="wrap" id="top">
+  <header class="site">
+    <a class="back" href="index.html#work"><span aria-hidden="true">←&nbsp;</span> All case studies</a>
+    <a class="name" href="index.html">Kris Bader</a>
+  </header>
+
+  <main id="main">
+    <div class="hero">
+      <p class="label">Case study · Evaluative research · Wallet Genius · Credit cards</p>
+      <h1>Diagnosing Drop-Off in a Credit Card Feature</h1>
+      <p class="dek">Nearly 70% of users who clicked into the feature left before reaching the final page. Within a couple days of testing, the cause was clear: <span class="hl">the wrong credit cards were being displayed</span>, with no easy way to correct them.</p>
+    </div>
+
+    <dl class="facts">
+      <div><dt>My role</dt><dd>Senior UX Researcher</dd></div>
+      <div><dt>Team</dt><dd>Me, Product, Design, Development</dd></div>
+      <div><dt>Timeline</dt><dd>June 2026</dd></div>
+      <div><dt>Participants</dt><dd>5 Experian users with very good or excellent credit and 3 or more credit cards</dd></div>
+      <div><dt>Method</dt><dd>Moderated usability testing on the live product, focused on first-time onboarding</dd></div>
+      <div><dt>Tools</dt><dd>Condens, Zoom, Camtasia, Great Question</dd></div>
+    </dl>
+
+    <div class="summary col" style="max-width:none">
+      <p class="label">The short version</p>
+      <dl>
+        <div><dt>Situation</dt><dd>A product manager shared funnel data: nearly 70% of 25,000+ users who clicked into Wallet Genius left before reaching its dashboard.</dd></div>
+        <div><dt>What I did</dt><dd>I ran moderated tests of the live onboarding flow with five users and shared the evidence with the team. Almost immediately after each user reached the card confirmation page, the problem was clear: the cards shown weren't their cards, and they had little ability to correct them.</dd></div>
+        <div><dt>Result</dt><dd>Engineering fixed the data problem and the designer added more control over the cards pulled in. Drop-off improved after testing was complete.</dd></div>
+      </dl>
+    </div>
+
+    <section aria-labelledby="why">
+      <h2 id="why">Why research mattered</h2>
+      <p>Experian launched Wallet Genius to help users get more from the credit cards they already carry. It shows the cards in a user's wallet and suggests cards that fit the way they spend.</p>
+      <p>A product manager shared concerning funnel data: of more than 25,000 users who clicked into Wallet Genius entry points, nearly 70% left before reaching the dashboard. The team had one hypothesis, that cards from a single issuer were being classified as a different card. It was a reasonable guess about data, but nobody had watched a user go through the flow. The abandonment was costing the team every day, and the open question was whether this was a data problem, a design problem, or a problem with the idea.</p>
+    </section>
+
+    <section aria-labelledby="approach">
+      <h2 id="approach">Research approach</h2>
+      <p>I ran moderated usability testing on the live product, focused on first-time onboarding. A prototype can't show how actual data factors into a product experience, and I wanted users' first impressions in their own words.</p>
+      <ul class="plain">
+        <li><strong>Participants.</strong> Five Experian users with very good or excellent credit, the only audience shown Wallet Genius, and three or more credit cards, since they were most likely to want a card-tracking tool. I recruited from Experian's user panel.</li>
+        <li><strong>Scope.</strong> Five users is a common balance of insight, time, and cost. The first few uncover most problems and later ones mostly repeat them. The tradeoff is that five users show what breaks, not how often.</li>
+        <li><strong>Task.</strong> Each session began with a scenario about finding a way to track existing credit cards and maximize rewards, then I watched for friction anywhere in the flow.</li>
+        <li><strong>Verification.</strong> With each participant's permission, development and engineering looked at their accounts to confirm whether the cards were wrong.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="findings">
+      <h2 id="findings">Key findings</h2>
+      <h3>1. The wrong cards were the problem, and they felt like a threat</h3>
+      <p>As soon as users reached the card confirmation page, they saw that the cards listed weren't theirs, and some questioned the accuracy and value of the whole feature. For a few it went further: fear and panic, and a wish to check their credit reports or call their banks about possible fraud.</p>
+      <figure class="quote">
+        <blockquote>“The random Southwest card really gives me a lot of anxiety and actually makes me like a little stressed.”</blockquote>
+      </figure>
+      <p>A wrong card isn't a small error on a financial product. For some users it suggested that something might be wrong with their identity or credit, and leaving felt like the safest response.</p>
+      <h3>2. Users couldn't fix it, and the available actions provided little help</h3>
+      <p>Users couldn't tell “Identify” and “Manage” apart. “Manage” suggested editing cards or exploring benefits but only offered removal, and a removed card sometimes appeared again.</p>
+      <figure class="quote">
+        <blockquote>“So this wording Identify and manage. It's a little bit not very clear to me right now. … What does identify mean and what does manage mean?”</blockquote>
+      </figure>
+      <h3>3. Recommendations lost credibility</h3>
+      <p>Because of the data problem, one participant was shown an optimized offer for a card they already had.</p>
+      <figure class="quote">
+        <blockquote>“So I have this card. So somehow I need to be able to edit all my cards properly. … this optimized card is one of the cards that I have actually.”</blockquote>
+      </figure>
+      <h3>4. The idea appealed, but discovery and value were thin</h3>
+      <p>Users looked for Wallet Genius under credit cards, credit information, and their credit reports. The actual entry point within their Experian profile felt hidden. They wanted clear rewards, earning potential, and guidance on which card to use. They generally liked the introductory content and setting a Wallet Goal, which points to real interest.</p>
+    </section>
+
+    <section aria-labelledby="outcomes">
+      <h2 id="outcomes">Influence and outcomes</h2>
+      <p>Having evidence from real accounts meant there was no debate about whose problem it was, and the team could go straight to fixing it. I cut participant feedback into video clips for the readout with product and design stakeholders, so they could hear reactions firsthand, and posted a card-by-card table of inconsistencies for each participant with the broader team.</p>
+      <ul class="plain">
+        <li><strong>What I delivered:</strong> video clips, the card-by-card table, and the full set of findings.</li>
+        <li><strong>What was implemented:</strong> engineering fixed the data problem, and the UX designer created new designs that gave users more editing control over the cards pulled into onboarding. The “Identify” and “Manage” labels were also corrected.</li>
+        <li><strong>What was measured:</strong> drop-off improved after testing was complete, but I don't know by how much.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="reflection">
+      <h2 id="reflection">Reflection</h2>
+      <p><strong>What I learned.</strong> When the cause is technical, evidence from real accounts is what moves a team. Asking engineers to look at participants' accounts turned a research finding into a confirmed bug.</p>
+      <p><strong>What I'd do differently.</strong> I didn't have much of a relationship with the engineering team, so I never invited them to the readout and relied on the product manager to connect everyone afterward. Watching users react to wrong cards would have been powerful for the people fixing the problem. Next time, I'd build that relationship before the research begins and bring the engineers into the room for them to witness, as well.</p>
+      <p><strong>What remained unresolved.</strong> The hidden entry point I reported had not been corrected.</p>
+    </section>
+
+    <section aria-labelledby="appendix">
+      <h2 id="appendix">Appendix: methods and supporting detail</h2>
+      <p>The full method notes and the rest of the findings, for a deeper read.</p>
+      <details class="appx"><summary>All findings</summary>
+      <ul class="findings wide" style="max-width:40rem">
+        <li><strong>Users struggled to find Wallet Genius.</strong><span>They looked in credit cards, credit information, and their credit reports. The entry point under Profile felt hidden.</span></li>
+        <li><strong>Incorrect cards undermined trust.</strong><span>Seeing cards they didn't own raised concerns about where Experian's data came from and whether unfamiliar accounts were tied to their credit. They also struggled to correct mismatches or find missing cards.</span></li>
+        <li><strong>“Identify” and “Manage” created misleading expectations.</strong><span>“Manage” suggested editing or exploring benefits but only offered removal. “Identify” implied benefits would appear immediately, which disappointed some.</span></li>
+        <li><strong>Users wanted more value from cards they already own.</strong><span>They expected clear rewards, earning potential, and guidance on which card to use. Some questioned how cards were put into categories.</span></li>
+        <li><strong>Recommendations needed better personalization.</strong><span>One participant received an optimized recommendation for a card they already had. Other offers didn't match their preferences, weakening confidence.</span></li>
+        <li><strong>The concept had appeal.</strong><span>Users generally liked the introductory content and setting a Wallet Goal.</span></li>
+      </ul>
+      </details>
+      <details class="appx"><summary>Method notes</summary>
+      <p>Moderated usability testing on the live product, five sessions, first-time onboarding. Participants came from Experian's user panel and were screened for very good or excellent credit and three or more credit cards. The opening scenario: “Imagine a friend told you that Experian allows you to track your existing credit cards and see how you can maximize your rewards. What would your first step be to find this feature?”</p>
+      <p>Tools: Condens, Zoom, Camtasia, Great Question.</p>
+      </details>
+      <details class="appx"><summary>More participant quotes</summary>
+      <figure class="quote">
+        <blockquote>“I'd probably get frustrated and I'd close out of the app … And then I would like go on TransUnion and Equifax to see if that account number was like tied to me incorrectly.”</blockquote>
+      </figure>
+      <figure class="quote">
+        <blockquote>“I didn't really feel like I was benefiting from, you know, identifying the card. I expected more from that. I feel like it was kind of misleading again.”</blockquote>
+      </figure>
+      </details>
+    </section>
+
+    <div class="next">
+      <a class="btn primary" href="index.html#work">Back to all case studies</a>
+    </div>
+  </main>
+
+  <footer><p>© 2026 Kris Bader</p></footer>
+</div>
+<script>
+  // Always open at the top of the page
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+  window.scrollTo(0, 0);
+  window.addEventListener('pageshow', function () { window.scrollTo(0, 0); });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kris Bader | Senior UX Researcher</title>
+<!-- seo:start -->
+<meta name="description" content="Senior UX Researcher with 14 years of experience. Four case studies on how research changed product decisions, from credit cards to insurance and loans.">
+<meta name="author" content="Kris Bader">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kris Bader, UX Research">
+<meta property="og:title" content="Kris Bader | Senior UX Researcher">
+<meta property="og:description" content="Senior UX Researcher with 14 years of experience. Four case studies on how research changed product decisions, from credit cards to insurance and loans.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kris Bader, Senior UX Researcher: I bring users' voices into the rooms where product decisions get made.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kris Bader | Senior UX Researcher">
+<meta name="twitter:description" content="Senior UX Researcher with 14 years of experience. Four case studies on how research changed product decisions, from credit cards to insurance and loans.">
+<meta name="twitter:image" content="og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Kris Bader","alternateName":"Kristofer Bader","jobTitle":"Senior UX Researcher","sameAs":["https://www.linkedin.com/in/kristoferbader/"]}</script>
+<!-- seo:end -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one calm reading column (~68ch) with a wider band for grids.
+   Signature detail: a "highlighter" mark, like annotating an interview transcript. */
+:root {
+  --bg: #ffffff;
+  --surface: #f4f8fe;
+  --sunk: #eaf1fd;
+  --fg: #111111;
+  --muted: #4a5563;
+  --line: #d5e0f0;
+  --accent: #4a86e8;
+  --accent-ink: #0a0a0a;
+  --link: #2f67cc;
+  --mark: #b9d3fb;
+  --ph-bg: #fff4d6;
+  --ph-fg: #7a5200;
+  color-scheme: light;
+
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.3rem;
+  --step-2: 1.75rem;
+  --step-3: clamp(2.1rem, 1.5rem + 2.6vw, 3.1rem);
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.skip { position: absolute; left: -9999px; top: 8px; background: var(--accent); color: var(--accent-ink); padding: 8px 14px; border-radius: 6px; z-index: 20; }
+.skip:focus { left: max(16px, env(safe-area-inset-left, 0px)); }
+
+.wrap { max-width: 68rem; margin-inline: auto; }
+.prose { max-width: 40rem; }
+
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; line-height: 1.15; text-wrap: balance; margin: 0; }
+h2 { font-size: var(--step-2); font-weight: 700; }
+h3 { font-size: var(--step-1); font-weight: 700; }
+p { margin: 0; }
+
+.label {
+  font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+.ph {
+  display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase; line-height: 1;
+  background: var(--ph-bg); color: var(--ph-fg); padding: 5px 7px; border-radius: 4px;
+  vertical-align: middle;
+}
+
+/* Header */
+header.site {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;
+  padding-block: 20px; border-bottom: 1px solid var(--line);
+}
+.name { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--fg); text-decoration: none; }
+header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); padding-block: 12px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 11; background: var(--bg); }
+html { scroll-padding-top: 5rem; }
+@media (max-width: 40rem) { header.site { gap: 0 12px; } header.site .name { font-size: 1rem; } nav ul { gap: 0 12px; } nav a { padding: 6px 0; } }
+@media (max-width: 24rem) { html { scroll-padding-top: 7.5rem; } }
+nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 0; padding: 0; }
+nav a { color: var(--fg); text-decoration: none; padding: 8px 0; display: inline-block; }
+nav a:hover { color: var(--link); text-decoration: underline; }
+
+section { padding-block: clamp(32px, 5vw, 56px); }
+section + section { border-top: 1px solid var(--line); }
+
+/* Intro */
+.intro { display: grid; gap: 20px; }
+.intro h1 { font-size: var(--step-3); font-weight: 700; letter-spacing: -0.01em; max-width: 30ch; }
+.hl {
+  background-image: linear-gradient(transparent 58%, var(--mark) 58%, var(--mark) 92%, transparent 92%);
+  padding-inline: 2px;
+}
+.intro .lede { font-size: var(--step-1); line-height: 1.55; max-width: 36rem; }
+.intro .meta { color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.btn {
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; border-radius: 8px;
+  font: 600 1rem var(--font-body); text-decoration: none; cursor: pointer; border: 2px solid var(--accent);
+}
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.secondary { background: transparent; color: var(--link); }
+.btn.small { min-height: 40px; padding: 0 14px; font-size: var(--step--1); }
+
+/* Impact numbers: a still alternative to a scrolling ticker */
+.numbers { padding-block: 0 clamp(32px, 5vw, 56px); border-top: 0; }
+.numbers-inner { display: grid; gap: 14px; }
+.numbers-head { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 20px 28px; }
+.stats li { display: grid; gap: 4px; align-content: start; border-left: 2px solid var(--line); padding-left: 16px; }
+.stat-num { font-family: var(--font-display); font-weight: 700; font-size: var(--step-2); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat-desc { font-size: var(--step--1); color: var(--fg); }
+.stat-src { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); }
+
+/* Voices: one quote at a time, auto-advancing every 10s, pausable */
+.voices { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 2px; padding: 4px 2px 14px; margin-inline: -2px; scrollbar-color: var(--accent) var(--surface); }
+.voices:focus-visible { outline-offset: -3px; }
+.voice { flex: 0 0 min(82%, 24rem); scroll-snap-align: start; margin: 0; display: grid; align-content: start; gap: 12px; border-top: 3px solid var(--accent); padding-top: 14px; }
+.voice blockquote { margin: 0; font-size: var(--step-0); line-height: 1.55; }
+.voice blockquote p { margin: 0; }
+.voice.clamp:not(.open) blockquote p { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+@media (max-width: 30rem) { .voice.clamp:not(.open) blockquote p { -webkit-line-clamp: 7; } }
+.voice figcaption { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+.voice figcaption strong { color: var(--fg); font-weight: 600; }
+.voice-more[hidden] { display: none; }
+.voice-more { justify-self: start; background: none; border: 0; padding: 6px 0; min-height: 44px; font: 500 0.82rem var(--font-mono); color: var(--link); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.voice-nav { display: flex; align-items: center; gap: 4px; }
+.voice-nav[hidden] { display: none; }
+.voice-arrow { width: 32px; height: 32px; padding: 0; display: grid; place-items: center; background: transparent; color: var(--link); border: 1px solid var(--line); border-radius: 50%; font-size: 0.9rem; line-height: 1; cursor: pointer; }
+.voice-arrow:hover:not(:disabled) { border-color: var(--accent); }
+.voice-arrow:disabled { color: var(--muted); opacity: 0.45; cursor: default; }
+.voice-dots { display: flex; margin-inline: 6px; }
+.voice-dots button { width: 22px; height: 32px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+.voice-dots button::before { content: ""; width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid var(--muted); background: transparent; }
+.voice-dots button[aria-current="true"]::before { background: var(--fg); border-color: var(--fg); }
+
+/* Section heads */
+.section-head { display: grid; gap: 8px; margin-bottom: 32px; }
+.section-head p { color: var(--muted); max-width: 40rem; }
+
+/* Project cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr)); gap: 20px; }
+.rows { display: grid; gap: 12px; }
+.row { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 22px; transition: border-color .15s ease; }
+.row:hover { border-color: var(--accent); }
+.row-main { display: grid; gap: 4px; min-width: 0; }
+.row h3 { font-size: var(--step-1); }
+.row h3 a { color: var(--fg); text-decoration: none; }
+.row h3 a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+.row h3 a:hover { color: var(--link); }
+.row .hook { color: var(--muted); font-size: var(--step--1); max-width: 52rem; }
+.row .hook strong { color: var(--fg); font-weight: 600; }
+.row .go { font-size: 1.4rem; color: var(--link); flex: none; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 24px; display: grid; gap: 14px; align-content: start; position: relative;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card .top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+.card h3 a { color: var(--fg); text-decoration: none; }
+.card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+.card h3 a:hover { color: var(--link); }
+.focus { display: grid; gap: 4px; }
+.focus .label { font-size: 0.75rem; }
+.focus p { font-size: var(--step-0); }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0; font-size: var(--step--1); }
+.facts dt { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-size: 0.78rem; padding-top: 2px; }
+.facts dd { margin: 0; min-width: 0; }
+.impact { border-top: 1px dashed var(--line); padding-top: 14px; font-size: var(--step--1); }
+.more { font-weight: 600; color: var(--link); font-size: var(--step--1); }
+
+/* More work list */
+.also { margin-top: 28px; display: grid; gap: 8px; max-width: 46rem; }
+.also ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Methods */
+.methods-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 16px; }
+.methods-tools .btn.small { min-height: 32px; padding: 0 12px; font-size: 0.8rem; border-width: 1px; }
+.method-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 28px 24px; align-items: start; }
+.group { display: grid; gap: 10px; min-width: 0; }
+.group-head { display: grid; gap: 2px; padding-bottom: 8px; border-bottom: 2px solid var(--fg); }
+.group-head h3 { font-size: 1.1rem; }
+.group-head p { font-size: var(--step--1); color: var(--muted); }
+.method-list { display: grid; gap: 0; }
+.group.ai { grid-column: 1 / -1; }
+.group.ai .method-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); column-gap: 24px; align-items: start; }
+.ai-note { font-size: var(--step--1); color: var(--muted); max-width: 48rem; }
+details.method { border-bottom: 1px solid var(--line); }
+details.method summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 12px 2px; min-height: 48px; font-weight: 600;
+}
+details.method summary::-webkit-details-marker { display: none; }
+details.method summary::after {
+  content: "+"; font-family: var(--font-mono); font-weight: 500; color: var(--link); font-size: 1.15rem; line-height: 1;
+}
+details.method[open] summary::after { content: "−"; }
+details.method summary:hover { color: var(--link); }
+.method-body { display: grid; gap: 8px; padding: 0 2px 16px; font-size: var(--step--1); }
+.method-body .when { color: var(--muted); }
+.method-body .when strong { color: var(--fg); font-weight: 600; }
+
+/* About */
+.about { display: grid; gap: 32px; }
+.about .prose { display: grid; gap: 16px; }
+@media (min-width: 52rem) { .about.has-photo { grid-template-columns: minmax(0, 40rem) minmax(15rem, 1fr); gap: 48px; align-items: start; } .about.has-photo .portrait { max-width: 24rem; } }
+.portrait { margin: 0; justify-self: end; width: 100%; max-width: 20rem; }
+.portrait img { display: block; width: 100%; max-width: none; height: auto; border-radius: 12px; }
+
+/* Tools: grouped chips */
+.tools { margin-top: clamp(40px, 6vw, 64px); display: grid; gap: 16px; }
+.tool-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 36rem) { .tool-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 52rem) { .tool-list { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.tool-list li { display: grid; place-items: center; min-height: 72px; padding: 12px 16px; background: #ffffff; border: 1px solid var(--line); border-radius: var(--radius); }
+.tool-list img { display: block; height: 30px; width: auto; max-width: 100%; object-fit: contain; }
+.tool-list img[src$="theydo.png"] { height: 38px; }
+}
+
+/* Contact */
+.contact { display: grid; gap: 16px; }
+.contact .links { margin: 16px 0 0; gap: 12px; }
+@media (max-width: 34rem) { .email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.email { font-family: var(--font-body); font-size: var(--step-1); user-select: all; overflow-wrap: anywhere; }
+.copy-status { color: var(--muted); font-size: var(--step--1); min-height: 1.5em; }
+
+footer { padding-block: 32px; border-top: 1px solid var(--line); color: var(--muted); font-size: var(--step--1); }
+</style>
+</head>
+<body>
+
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="wrap">
+  <header class="site">
+    <a class="name" href="#top" id="top">Kris Bader</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#methods">Methods</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="intro" aria-labelledby="intro-title">
+      <p class="label">Senior UX Researcher · Open to new roles</p>
+      <h1 id="intro-title">I bring <span class="hl">users' voices</span> into the rooms where product decisions get made.</h1>
+      <p class="lede">I'm a mixed-method researcher who turns everyday user behavior into opportunities that shape product roadmaps. I build scalable research processes, run centralized research repositories, and lead studies that uncover unmet needs.</p>
+      <p class="meta">14 years of research: 8 in UX, 6 in market research · Based in Cleveland, Ohio</p>
+      <div class="actions">
+        <a class="btn primary" href="#work">See case studies</a>
+        <a class="btn secondary" href="#contact">Get in touch</a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/kristoferbader/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+    <section class="numbers" aria-labelledby="numbers-title">
+      <div class="numbers-inner">
+        <div class="numbers-head">
+          <h2 id="numbers-title" class="label">What people say</h2>
+        </div>
+        <div class="voices" id="voices" tabindex="0" role="region" aria-label="Quotes from colleagues and participants, scroll sideways">
+          <figure class="voice"><blockquote><p>Kris brings a genuinely great attitude to his work every day. No matter how much is on his plate, he shows up positive, focused, and ready to tackle whatever is needed. He regularly juggles multiple studies at once, while maintaining strong rigor, clear process, and high-quality outputs. His work has had real impact, helping drive several important initiatives forward by delivering thoughtful, well-structured insights that stakeholders trust and act on.</p></blockquote><figcaption><strong>Rachel</strong>, UX Research Manager</figcaption></figure>
+          <figure class="voice"><blockquote><p>Kris made UXR so much easier for me personally. I used to avoid testing because it was cumbersome. I got much more comfortable testing even the small things while working with Kris and I’ll be forever grateful.</p></blockquote><figcaption><strong>Emmy</strong>, UX Design Manager</figcaption></figure>
+          <figure class="voice"><blockquote><p>Just because Kris makes research look effortless, does not mean the work and consistency he brings to the team are easy! He is proactive, thoughtful, and thorough every step of the way. He sets an amazing example juggling stakeholders and building trust every day. All of this, he does with a great attitude and a personality that makes me excited to log on every day and be his colleague! Kris' work and attitude is the glue that keeps the UXR team running like a well-oiled machine.</p></blockquote><figcaption><strong>Anne-Marie</strong>, Senior UXR Researcher</figcaption></figure>
+          <figure class="voice"><blockquote><p>I recently had the opportunity to partner with Kris on a customer support usability test, and he went above and beyond expectations! I truly appreciate his passion for advocating for our members and ensuring their voices are represented in every step of the process. His findings and insights were the missing puzzle piece to the feedback we’ve been tracking since the migration to the new platform and brought clarity and alignment that will help drive meaningful improvements.</p></blockquote><figcaption><strong>Holly</strong>, VoC Senior Analyst</figcaption></figure>
+          <figure class="voice"><blockquote><p>Kris, the Researcher who I usually respond to research requests for, is quite excellent.</p></blockquote><figcaption><strong>Experian research participant</strong></figcaption></figure>
+        </div>
+        <div class="voice-nav" id="voice-nav" hidden>
+          <button class="voice-arrow" type="button" id="voice-prev" aria-label="Previous quote">&larr;</button>
+          <div class="voice-dots" id="voice-dots"></div>
+          <button class="voice-arrow" type="button" id="voice-next" aria-label="Next quote">&rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" aria-labelledby="work-title">
+      <div class="section-head">
+        <p class="label">Selected work</p>
+        <h2 id="work-title">Case studies</h2>
+        <p>Each case study covers the problem, my role, the methods I chose and why, and what changed because of the research.</p>
+      </div>
+
+      <div class="rows">
+        <article class="row">
+          <div class="row-main">
+            <h3><a href="wallet-genius.html#top">Diagnosing Drop-Off in a Credit Card Feature</a></h3>
+            <p class="hook">Nearly 70% of users who entered a credit card feature left before the final page. Research traced it to the wrong cards being displayed with no good way to fix them. Engineering fixed the data problem, drop-off improved, and card editing was added.</p>
+          </div>
+          <span class="go" aria-hidden="true">&rarr;</span>
+        </article>
+        <article class="row">
+          <div class="row-main">
+            <h3><a href="vehicle-marketplace.html#top">Identifying Significant Roadblocks to New Product Adoption</a></h3>
+            <p class="hook">Prior to a product launch, research showed that a new product would not give users more value than they already receive elsewhere. Product and development work was cancelled, likely saving months of time and effort.</p>
+          </div>
+          <span class="go" aria-hidden="true">&rarr;</span>
+        </article>
+        <article class="row">
+          <div class="row-main">
+            <h3><a href="policy-connection.html#top">Finding Friction in a Long-Requested Feature</a></h3>
+            <p class="hook">Users long asked to import their insurance policy, and a prototype delivered it. After launch, forgotten logins and 1-5+ minute waits caused abandonment. Stakeholders observed the delays and worked to fix them.</p>
+          </div>
+          <span class="go" aria-hidden="true">&rarr;</span>
+        </article>
+        <article class="row">
+          <div class="row-main">
+            <h3><a href="personal-loans.html#top">Iterating on an Overlooked Personalization Touchpoint</a></h3>
+            <p class="hook">Users ignored a loan-offer personalization carousel. Four research methods in two weeks narrowed many designs to one that was twice as effective in an A/B test. 78,000+ users have since completed it.</p>
+          </div>
+          <span class="go" aria-hidden="true">&rarr;</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="methods" aria-labelledby="methods-title">
+      <div class="section-head">
+        <p class="label">How I work</p>
+        <h2 id="methods-title">Methodologies</h2>
+        <p>Every project starts with one question to stakeholders: what are you trying to learn? The answer decides the method. Open any method to see what it is and when I choose it.</p>
+        <p>I also use AI to organize evidence, surface patterns, and make past research easier to find. I treat its output as a first pass and check it against the source evidence before it becomes a finding.</p>
+      </div>
+
+      <div class="methods-tools">
+        <button class="btn secondary small" type="button" id="toggle-all" aria-controls="method-groups">Expand all</button>
+      </div>
+
+      <div class="method-groups" id="method-groups">
+        <div class="group">
+          <div class="group-head">
+            <h3>Test the experience</h3>
+            <p>Does this design work for users?</p>
+          </div>
+          <div class="method-list">
+            <details class="method"><summary>Moderated usability testing</summary>
+              <div class="method-body"><p>Live sessions where users think aloud as they use a prototype or product, with follow-up questions on what I observe.</p><p class="when"><strong>I reach for it when</strong> we need to understand why users struggle, not just where.</p></div></details>
+            <details class="method"><summary>Unmoderated testing</summary>
+              <div class="method-body"><p>Users complete tasks on their own time while their screens and voices are recorded.</p><p class="when"><strong>I reach for it when</strong> the questions are focused and we need answers within days.</p></div></details>
+            <details class="method"><summary>Competitive usability testing</summary>
+              <div class="method-body"><p>Running usability sessions on a competitor's product to learn what works and what frustrates users.</p><p class="when"><strong>I reach for it when</strong> we're entering a market and don't have our own product to test yet.</p></div></details>
+          </div>
+        </div>
+
+        <div class="group">
+          <div class="group-head">
+            <h3>Attention &amp; findability</h3>
+            <p>Can users see it and find it?</p>
+          </div>
+          <div class="method-list">
+            <details class="method"><summary>AI eye tracking</summary>
+              <div class="method-body"><p>Predicts where users look on a screen, giving objective data on what captures attention first.</p><p class="when"><strong>I reach for it when</strong> design elements don't appear to stand out.</p></div></details>
+            <details class="method"><summary>First-click tests</summary>
+              <div class="method-body"><p>Shows where users click first when given a task, a strong signal for findability.</p><p class="when"><strong>I reach for it when</strong> a key entry point needs to stand out on a busy page.</p></div></details>
+            <details class="method"><summary>Five-second tests</summary>
+              <div class="method-body"><p>Reveals what users notice and remember in the first five seconds of seeing a design.</p><p class="when"><strong>I reach for it when</strong> a page has to communicate its value at a glance.</p></div></details>
+            <details class="method"><summary>Navigation tests</summary>
+              <div class="method-body"><p>Finds where users get stuck looking for information or finishing a task because the navigation is unclear.</p><p class="when"><strong>I reach for it when</strong> users land in the wrong place or drop off mid-flow.</p></div></details>
+          </div>
+        </div>
+
+        <div class="group">
+          <div class="group-head">
+            <h3>Structure &amp; preference</h3>
+            <p>How do users think it should work?</p>
+          </div>
+          <div class="method-list">
+            <details class="method"><summary>Preference tests</summary>
+              <div class="method-body"><p>Compares design options to confirm which one aligns with what users prefer, and why.</p><p class="when"><strong>I reach for it when</strong> a team is split between two directions.</p></div></details>
+            <details class="method"><summary>Design surveys</summary>
+              <div class="method-body"><p>Qualitative questions about how users perceive specific design decisions.</p><p class="when"><strong>I reach for it when</strong> we want reactions from more users than sessions allow.</p></div></details>
+            <details class="method"><summary>Card sorts</summary>
+              <div class="method-body"><p>Users group and label information in ways that make sense to them, revealing their mental models.</p><p class="when"><strong>I reach for it when</strong> content is being reorganized or new sections are added.</p></div></details>
+            <details class="method"><summary>Tree tests</summary>
+              <div class="method-body"><p>Checks how well a site or app's structure matches how users expect to find things.</p><p class="when"><strong>I reach for it when</strong> a new structure needs validating before any design is built.</p></div></details>
+          </div>
+        </div>
+
+        <div class="group">
+          <div class="group-head">
+            <h3>Make insight travel</h3>
+            <p>How do findings reach decisions?</p>
+          </div>
+          <div class="method-list">
+            <details class="method"><summary>Video storytelling</summary>
+              <div class="method-body"><p>Short reels of real users that bring their voices straight into stakeholder discussions.</p><p class="when"><strong>I reach for it when</strong> a finding needs to change a plan. Watching users struggle persuades more than my summary.</p></div></details>
+            <details class="method"><summary>Research repository</summary>
+              <div class="method-body"><p>Every session goes into Condens, tagged with a shared library of 250+ tags, so findings can be found and reused.</p><p class="when"><strong>I reach for it when</strong> a stakeholder's question may already be answered by past research.</p></div></details>
+            <details class="method"><summary>Journey mapping</summary>
+              <div class="method-body"><p>Dynamic journey maps show where users struggle, and product teams can file Jira tickets straight from a pain point.</p><p class="when"><strong>I reach for it when</strong> a problem spans several steps or teams, like registration abandonment.</p></div></details>
+          </div>
+        </div>
+
+        <div class="group ai">
+          <div class="group-head">
+            <h3>Working with AI</h3>
+            <p>How I move faster without losing rigor</p>
+          </div>
+          <div class="method-list">
+            <details class="method"><summary>Organizing evidence</summary>
+              <div class="method-body"><p>First-pass highlight summaries, grouped observations, and questions across sessions in Condens.</p><p class="when"><strong>I reach for it when</strong> I'm working through many sessions and want a starting point to check against the recordings.</p></div></details>
+            <details class="method"><summary>AI-moderated research</summary>
+              <div class="method-body"><p>Tools like Outset and Great Question run interviews and tests without a live moderator.</p><p class="when"><strong>I reach for it when</strong> the questions are well defined and we need speed or breadth.</p></div></details>
+            <details class="method"><summary>Repository search</summary>
+              <div class="method-body"><p>AI-assisted search, including Condens in Slack, lets stakeholders find past evidence without needing a researcher to retrieve it. This roughly saved 20 minutes per request.</p><p class="when"><strong>I reach for it when</strong> a question may already be answered by past research.</p></div></details>
+            <details class="method"><summary>Structured review workflows</summary>
+              <div class="method-body"><p>Workflow skills that my team developed review transcripts and recordings, propose potential findings, draft reports, assemble highlight reels, and check findings against source evidence, with researcher review built in.</p><p class="when"><strong>I reach for it when</strong> a study needs to move faster and the evidence can be checked at each step.</p></div></details>
+            <details class="method"><summary>Competitive and secondary research</summary>
+              <div class="method-body"><p>AI helps synthesize reviews and compare existing experiences.</p><p class="when"><strong>I reach for it when</strong> we need landscape context before or alongside primary research.</p></div></details>
+            <details class="method"><summary>Where I draw the line</summary>
+              <div class="method-body"><p>An AI theme or summary is never a final finding. I check it against the evidence, look for contradictions, and use the study context to decide what it means. AI-generated statements aren't participant evidence, and automated checks are never the only basis for approving a report. Participant information is handled before AI processing, and identifying details stay out of shared outputs.</p></div></details>
+          </div>
+          <p class="ai-note">Moderated usability studies moved from roughly 3–4 weeks to 1.5–2 weeks, and competitive and secondary research from 2–3 days to about one day.</p>
+        </div>
+      </div>
+
+      <div class="tools">
+        <div class="tools-head">
+          <h3 id="tools-title">Tools I use</h3>
+        </div>
+        <ul class="tool-list" aria-labelledby="tools-title"><li><img src="logos/condens.png" alt="Condens" width="318" height="96" loading="lazy"></li><li><img src="logos/lyssna.png" alt="Lyssna" width="369" height="96" loading="lazy"></li><li><img src="logos/figma.png" alt="Figma" width="348" height="96" loading="lazy"></li><li><img src="logos/figjam.png" alt="FigJam" width="275" height="96" loading="lazy"></li><li><img src="logos/outset.png" alt="Outset" width="389" height="96" loading="lazy"></li><li><img src="logos/great-question.png" alt="Great Question" width="520" height="68" loading="lazy"></li><li><img src="logos/user-interviews.png" alt="User Interviews" width="750" height="96" loading="lazy"></li><li><img src="logos/attention-insight.png" alt="Attention Insight" width="292" height="96" loading="lazy"></li><li><img src="logos/chatgpt.png" alt="ChatGPT" width="416" height="96" loading="lazy"></li><li><img src="logos/claude.png" alt="Claude" width="447" height="96" loading="lazy"></li><li><img src="logos/zoom.png" alt="Zoom" width="424" height="96" loading="lazy"></li><li><img src="logos/loom.png" alt="Loom" width="315" height="96" loading="lazy"></li><li><img src="logos/camtasia.png" alt="Camtasia" width="486" height="96" loading="lazy"></li><li><img src="logos/theydo.png" alt="TheyDo" width="185" height="96" loading="lazy"></li><li><img src="logos/usertesting.png" alt="UserTesting" width="375" height="96" loading="lazy"></li></ul>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="about has-photo">
+        <div class="prose">
+          <p class="label">About</p>
+          <h2 id="about-title">A little about me</h2>
+          <p>I’m a loving husband and a dad to my daughter, and most of my time away from work goes to them: cooking, hiking, and traveling. I’ve been to 31 countries and plan to reach at least 50. I’m also a Cleveland Cavaliers and Guardians season ticket holder and a 9-time fantasy football champion, with a soft spot for music and good TV. My favorite coworker is my dog, Piper.</p>
+          <p>Teammates would describe me as friendly and caring, a calm presence in the room.</p>
+          <p>My career started in 2012, as the team researcher on a Kraft Foods project in a grad school product design studio. After several years in agency market research, a General Assembly course led me to UX research in 2018. At Hyland Software, I ran B2B research with users across government, finance, higher education, and healthcare. At Experian, I led B2C research for the Marketplace, Insurance, Emerging Verticals, and Customer Support teams, advocating for users on their path to better financial health.</p>
+          <p>What I love most is the moment research becomes personal: sitting down one-on-one with the people who use my companies’ products, observing their challenges, and letting their voices be heard. I’m looking for a role where I can keep being a bright spot in my users’ days and keep making an impact in their lives.</p>
+        </div>
+        <figure class="portrait"><img src="about-photo.jpg" alt="Kris Bader smiling, wearing glasses and a plaid shirt" width="669" height="720" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <p class="label">Contact</p>
+      <h2 id="contact-title">Let's talk about how I can help you</h2>
+      <p class="links">
+        <a class="btn primary" href="mailto:kris.bader@gmail.com" target="_blank" rel="noopener">kris.bader@gmail.com</a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/kristoferbader/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn secondary" href="Kristofer_Bader_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Kris Bader</p>
+  </footer>
+</div>
+
+<script>
+  // Expand / collapse all methods
+  const toggleAll = document.getElementById('toggle-all');
+  const methods = document.querySelectorAll('details.method');
+  function syncLabel() {
+    const allOpen = [...methods].every(d => d.open);
+    toggleAll.textContent = allOpen ? 'Collapse all' : 'Expand all';
+  }
+  toggleAll.addEventListener('click', () => {
+    const open = ![...methods].every(d => d.open);
+    methods.forEach(d => { d.open = open; });
+    syncLabel();
+  });
+  methods.forEach(d => d.addEventListener('toggle', syncLabel));
+
+
+
+  // Quotes strip: loops endlessly (copies before and after), long quotes get Read more, arrows and dots follow position
+  (function () {
+    const wrap = document.getElementById('voices');
+    const originals = [...wrap.querySelectorAll('.voice')];
+    const N = originals.length;
+    const nav = document.getElementById('voice-nav');
+    const dotsBox = document.getElementById('voice-dots');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const behavior = reduce ? 'auto' : 'smooth';
+
+    // Read more buttons, then copies so the strip can wrap around
+    originals.forEach((c, n) => {
+      c.dataset.g = n;
+      const m = document.createElement('button');
+      m.type = 'button'; m.className = 'voice-more'; m.textContent = 'Read more'; m.setAttribute('aria-expanded', 'false'); m.hidden = true;
+      c.insertBefore(m, c.querySelector('figcaption'));
+    });
+    const makeCopy = c => {
+      const k = c.cloneNode(true);
+      k.setAttribute('aria-hidden', 'true');
+      k.querySelectorAll('button').forEach(x => { x.tabIndex = -1; });
+      return k;
+    };
+    originals.slice().reverse().forEach(c => wrap.insertBefore(makeCopy(c), wrap.firstChild));
+    originals.forEach(c => wrap.appendChild(makeCopy(c)));
+    const all = () => [...wrap.querySelectorAll('.voice')];
+
+    wrap.addEventListener('click', e => {
+      const m = e.target.closest('.voice-more');
+      if (!m) return;
+      const g = m.closest('.voice').dataset.g;
+      const open = !m.closest('.voice').classList.contains('open');
+      all().filter(c => c.dataset.g === g).forEach(c => {
+        c.classList.toggle('open', open);
+        const b = c.querySelector('.voice-more');
+        b.textContent = open ? 'Show less' : 'Read more';
+        b.setAttribute('aria-expanded', open);
+      });
+    });
+    function measure() {
+      originals.forEach(c => {
+        const copies = all().filter(x => x.dataset.g === c.dataset.g);
+        const p = c.querySelector('blockquote p');
+        if (c.classList.contains('open')) return;
+        c.classList.add('clamp');
+        const over = p.scrollHeight > p.clientHeight + 1;
+        copies.forEach(x => { x.classList.toggle('clamp', over); x.querySelector('.voice-more').hidden = !over; });
+      });
+    }
+
+    // Position maths
+    let origStart = 0, pitch = 1, setW = 1;
+    const left = c => c.getBoundingClientRect().left - wrap.getBoundingClientRect().left + wrap.scrollLeft;
+    function layout() {
+      const cs = all();
+      origStart = left(cs[N]) - 2;
+      pitch = left(cs[N + 1]) - left(cs[N]);
+      setW = pitch * N;
+    }
+    const index = () => Math.round((wrap.scrollLeft - origStart) / pitch);
+    const mod = n => ((n % N) + N) % N;
+    function paint() {
+      const k = mod(index());
+      dots.forEach((d, n) => d.setAttribute('aria-current', n === k ? 'true' : 'false'));
+    }
+    function normalize() {
+      const s = wrap.scrollLeft;
+      if (s < origStart - 2) wrap.scrollTo({ left: s + setW, behavior: 'instant' });
+      else if (s >= origStart + setW - 2) wrap.scrollTo({ left: s - setW, behavior: 'instant' });
+      paint();
+    }
+    function goTo(i) { wrap.scrollTo({ left: origStart + i * pitch, behavior }); }
+
+    const dots = originals.map((c, n) => {
+      const d = document.createElement('button');
+      d.type = 'button'; d.setAttribute('aria-label', 'Show quote ' + (n + 1) + ' of ' + N);
+      d.addEventListener('click', () => goTo(index() - mod(index()) + n));
+      dotsBox.appendChild(d);
+      return d;
+    });
+    document.getElementById('voice-prev').addEventListener('click', () => goTo(index() - 1));
+    document.getElementById('voice-next').addEventListener('click', () => goTo(index() + 1));
+
+    let t;
+    wrap.addEventListener('scroll', () => { paint(); clearTimeout(t); t = setTimeout(normalize, 140); }, { passive: true });
+    if ('onscrollend' in window) wrap.addEventListener('scrollend', () => { clearTimeout(t); normalize(); });
+
+    function init() { measure(); layout(); wrap.scrollTo({ left: origStart, behavior: 'instant' }); paint(); }
+    init();
+    nav.hidden = false;
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { const k = mod(index()); measure(); layout(); wrap.scrollTo({ left: origStart + k * pitch, behavior: 'instant' }); paint(); });
+    let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { const k = mod(index()); measure(); layout(); wrap.scrollTo({ left: origStart + k * pitch, behavior: 'instant' }); paint(); }, 150); });
+  })();
+
+</script>
+
+</body>
+</html>
